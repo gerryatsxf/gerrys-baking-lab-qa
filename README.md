@@ -58,19 +58,20 @@ The table is regenerated automatically whenever a new session is merged.
 
 ## Repository structure
 
-```
-gerrys-baking-lab/
-├── .github/
-│   └── workflows/
-│       ├── validate-pr.yml     ← quality checks run on every pull request
-│       └── deploy-pages.yml    ← site regeneration runs on every merge to main
-├── logs/
-│   └── session-YYYY-MM-DD.md  ← one file per baking session
-├── docs/
-│   └── index.html             ← auto-generated session index; served by GitHub Pages
-├── scripts/
-│   └── generate_index.py      ← builds the HTML table from all log files
-└── README.md                  ← this file
+```mermaid
+flowchart LR
+    root["📁 gerrys-baking-lab/"]
+    root --> gh["📁 .github/"]
+    gh --> wf["📁 workflows/"]
+    wf --> val["📄 validate-pr.yml\n← quality checks run on every pull request"]
+    wf --> dep["📄 deploy-pages.yml\n← site regeneration runs on every merge to main"]
+    root --> logs["📁 logs/"]
+    logs --> ses["📄 session-YYYY-MM-DD.md\n← one file per baking session"]
+    root --> docs["📁 docs/"]
+    docs --> idx["📄 index.html\n← auto-generated session index; served by GitHub Pages"]
+    root --> scripts["📁 scripts/"]
+    scripts --> gen["📄 generate_index.py\n← builds the HTML table from all log files"]
+    root --> rm["📄 README.md\n← this file"]
 ```
 
 ---
